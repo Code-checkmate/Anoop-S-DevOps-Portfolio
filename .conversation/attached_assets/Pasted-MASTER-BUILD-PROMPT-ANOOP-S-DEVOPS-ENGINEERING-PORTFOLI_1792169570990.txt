@@ -1,0 +1,1005 @@
+MASTER BUILD PROMPT — ANOOP S. DEVOPS ENGINEERING PORTFOLIO
+
+1. Your role and primary objective
+
+Act as a senior frontend engineer, UI/UX designer, and QA engineer.
+
+Build a complete, polished, responsive, multi-page personal portfolio website for Anoop S., a DevOps professional.
+
+This must be a functioning website, not merely a design mockup, a single landing page, or a static screenshot.
+
+The portfolio should communicate practical DevOps experience, Linux operations, cloud technologies, application deployment, CI/CD, automation, professional training, and hands-on projects.
+
+The site must have a distinctive engineering identity. Its individual pages should take visual inspiration from familiar developer and DevOps products while retaining original branding, original copy, and a consistent overall design system.
+
+The nine main pages are:
+
+1. Home
+2. About
+3. Skills
+4. Projects
+5. Experience
+6. Professional Trainings
+7. Certifications
+8. Contact
+9. Hire Me
+
+Implement all nine pages and their navigation before considering the work complete.
+
+Priority: stability, clean architecture, working interactions, responsive design, maintainability, and visual quality. Do not sacrifice working functionality for decorative effects.
+
+---
+
+2. Technology stack and implementation requirements
+
+Use the following stack unless the existing Replit environment makes a specific choice incompatible:
+
+- React
+- TypeScript
+- Vite
+- React Router for client-side routing
+- CSS or CSS modules for styling, with shared design tokens
+- Lucide React for icons, if successfully installed
+- Local TypeScript data objects for page content
+
+Use stable, mutually compatible dependency versions.
+
+Before making changes, inspect the existing project files and package configuration. Preserve useful existing configuration when possible. Do not unnecessarily replace working project infrastructure.
+
+If starting from an empty project, initialize the application correctly.
+
+Engineering rules
+
+- Use reusable React components.
+- Use TypeScript types for reusable data structures.
+- Keep page content and project data separate from presentation components.
+- Avoid one enormous component containing the entire application.
+- Avoid unnecessary libraries, complicated build plugins, experimental APIs, and brittle CSS.
+- Do not use browser APIs during server-side rendering or module initialization.
+- Do not introduce a backend that requires unprovided credentials.
+- Do not expose secrets, API keys, tokens, or credentials.
+- Use semantic HTML and accessible form controls.
+- Implement meaningful loading, empty, error, and success states where applicable.
+- Use stable keys when rendering lists.
+- Ensure every internal navigation link points to a real route.
+- Ensure buttons either perform their stated action or are clearly presented as unavailable until configured.
+- Do not leave broken links, dead buttons, unfinished routes, or console errors.
+
+If a preferred optional dependency cannot be installed, use a simple native alternative rather than abandoning the build.
+
+---
+
+3. Global design system
+
+Create a cohesive technical aesthetic inspired by cloud infrastructure consoles, developer platforms, source-control dashboards, and DevOps operations tools.
+
+Core visual identity
+
+- Dark navy and charcoal backgrounds.
+- Slightly lighter surfaces for cards and panels.
+- Thin, restrained borders.
+- White and soft-grey typography.
+- Blue and cyan accents for technical navigation and highlights.
+- Green only for genuine positive states.
+- Red reserved primarily for the prominent Hire Me action.
+- Monospace typography for terminal output, commands, repository metadata, and technical labels.
+- A readable modern sans-serif font for normal content.
+- Subtle hover states, focus states, transitions, and restrained motion.
+- Consistent spacing, border radii, typography, and component sizing.
+
+Use CSS variables/design tokens for colors, spacing, typography, borders, shadows, and animation timing.
+
+Do not make every page look identical. Each page must have its own recognizable visual treatment while clearly belonging to the same portfolio.
+
+Inspiration without copying
+
+Use the following design directions as references for layout and interaction patterns:
+
+- Home: cloud infrastructure architecture and an interactive Linux terminal.
+- About: AWS Management Console-inspired layout.
+- Skills: Docker Hub-inspired skill registry.
+- Projects: GitHub-inspired repository dashboard and project cards.
+- Experience: Ansible-inspired operations dashboard.
+- Professional Trainings: Terraform/IaC-inspired infrastructure layout.
+- Certifications: cloud credential vault inspired by certification portals.
+- Contact: Jenkins-inspired CI/CD control center.
+- Hire Me: opportunity pipeline inspired by deployment dashboards.
+
+These are visual inspirations only. Do not copy official product logos, trademarks, proprietary assets, exact branding, or misleading official-product styling. Create an original portfolio identity.
+
+Responsive behavior
+
+The website must work on:
+
+- Desktop screens
+- Laptops
+- Tablets
+- Android and iOS mobile browsers
+
+Use a responsive navigation menu on small screens, appropriately sized touch targets, fluid grids, readable text, and no horizontal overflow.
+
+Respect reduced-motion preferences. Ensure text remains legible and contrast is sufficient.
+
+---
+
+4. Navigation and application structure
+
+Create a shared navigation header with the following destinations:
+
+HOME | ABOUT | SKILLS | PROJECTS | EXPERIENCE | TRAININGS | CERTIFICATIONS | CONTACT | HIRE ME
+
+Requirements:
+
+- Use React Router or an equivalent proper routing solution.
+- Highlight the active route.
+- Keep navigation consistent across all pages.
+- Make the header responsive.
+- The Hire Me navigation item should stand out in red without overpowering the other navigation links.
+- Provide a consistent footer with relevant navigation, contact links, GitHub, LinkedIn, and copyright information.
+- Do not add a separate Resume navigation item. Resume actions belong within relevant pages.
+- Internal navigation should not trigger full page reloads unnecessarily.
+- Support direct visits to individual routes.
+- Handle unknown routes with a polished 404 page and a link back home.
+
+Recommended routes:
+
+- "/"
+- "/about"
+- "/skills"
+- "/projects"
+- "/projects/:slug"
+- "/experience"
+- "/trainings"
+- "/certifications"
+- "/contact"
+- "/hire-me"
+
+Project detail pages must have their own URLs and support direct browser navigation.
+
+---
+
+5. Shared interactive Linux terminal
+
+This is an important portfolio feature. Implement it as a reusable component available across the website.
+
+Home page behavior
+
+On the Home page, display a prominent terminal panel on the LEFT and the main introduction on the RIGHT on desktop.
+
+The terminal should look like a Linux shell window, with a title bar, terminal controls, prompt, command input, output area, and a clear/reset control.
+
+Use a safe, simulated terminal. It is a portfolio interaction, not a real shell.
+
+Suggested commands:
+
+- "help"
+- "whoami"
+- "pwd"
+- "ls"
+- "clear"
+- "date"
+- "skills"
+- "projects"
+- "experience"
+- "about"
+- "contact"
+- "resume"
+- "cd about"
+- "cd projects"
+- "cd skills"
+- "cd experience"
+- "cd contact"
+- "open linux"
+- "open aws"
+- "open docker"
+- "open github"
+
+Commands should return useful, realistic simulated output. Commands that refer to site sections should navigate to the corresponding route or display a working link.
+
+Unknown commands should return a friendly simulated error, such as a command-not-found message, and suggest "help".
+
+Requirements:
+
+- Accept typed input and Enter.
+- Support a visible command history.
+- Provide a clear command list.
+- Ensure keyboard focus and mobile input work correctly.
+- Never execute arbitrary shell commands.
+- Never access the host operating system, filesystem, environment variables, or network through the simulator.
+- Keep the terminal responsive and scrollable.
+
+On mobile, stack the Home page layout vertically, with a usable terminal that does not overwhelm the introduction.
+
+Other pages
+
+On all other routes, show a minimized floating terminal launcher in the bottom-right corner.
+
+Clicking the launcher opens a terminal overlay or drawer. The user can minimize or close it and return to the same page without losing their navigation context.
+
+Avoid covering important controls. On mobile, size and position the overlay appropriately.
+
+The terminal must share the same command behavior and route map across the website.
+
+---
+
+6. HOME PAGE — cloud infrastructure + terminal
+
+Create a memorable engineering landing page.
+
+Desktop layout
+
+Two primary columns:
+
+LEFT:
+
+- Interactive Linux terminal.
+- Simulated command prompt.
+- Example output showing the portfolio owner’s professional focus.
+
+RIGHT:
+
+- Small professional eyebrow label, such as “DEVOPS ENGINEER | LINUX | CLOUD | AUTOMATION”.
+- Main heading: “Building reliable systems through automation.”
+- Short professional introduction.
+- Primary CTA: “Explore Projects”.
+- Secondary CTA: “About Me”.
+- A smaller Contact or Hire Me link.
+
+Use a subtle cloud/infrastructure background motif: connected nodes, restrained topology lines, service blocks, or a simple original infrastructure illustration made with CSS or SVG.
+
+Do not use heavy animations or huge decorative graphics that hurt performance.
+
+Below the hero
+
+Add compact sections for:
+
+1. Featured project.
+2. Core technical focus.
+3. Professional experience summary.
+4. A clear Hire Me CTA.
+
+All CTAs must navigate to their intended pages.
+
+Avoid fabricated experience totals, uptime figures, project counts, user counts, or performance metrics.
+
+---
+
+7. ABOUT PAGE — AWS console-inspired profile
+
+Create a professional profile page inspired by a cloud management console layout.
+
+Layout
+
+- Dark technical dashboard styling.
+- A left-side section navigation on desktop.
+- A primary content panel on the right.
+- Stacked layout or a compact navigation selector on mobile.
+
+Section navigation:
+
+- Overview
+- Who Am I?
+- My Journey
+- Why DevOps?
+- Engineering Mindset
+- Current Focus
+
+Content
+
+Use this professional bio as the initial editable draft:
+
+“I'm Anoop S., a DevOps engineer focused on Linux systems, cloud operations, application deployments, and automation. My experience has introduced me to the practical side of keeping applications running: working with Linux environments, supporting deployments, troubleshooting operational issues, and collaborating on infrastructure tasks. I enjoy understanding what happens behind an application—from the underlying operating system and deployment process to the infrastructure that supports it. I'm continuing to deepen my expertise in Linux, cloud technologies, containerisation, and CI/CD, with the goal of building reliable, maintainable, and increasingly automated systems.”
+
+The copy must be editable in one data file.
+
+Use known experience and training facts only. Do not invent childhood stories, personal motivations, awards, leadership claims, or achievements.
+
+Include a navigation CTA to Projects and Experience.
+
+---
+
+8. SKILLS PAGE — Skill Hub
+
+Create a skill registry inspired by Docker Hub’s discoverable cards and technical catalogue patterns. Do not copy Docker’s branding or imply this is an official Docker product.
+
+Page title:
+
+“Skill Hub”
+
+Subtitle:
+
+“Anoop’s Technical Skills Registry”
+
+Layout and interactions
+
+- Search input.
+- Category filter chips.
+- Responsive skill-card grid.
+- Consistent iconography.
+- A details panel, modal, or expandable card for each skill.
+- Clear status labels that distinguish professional experience from projects, training, and future learning.
+
+Suggested categories:
+
+- All
+- Linux & Systems
+- Cloud
+- Containers & Orchestration
+- CI/CD
+- Infrastructure as Code & Automation
+- Monitoring
+- Networking & Operations
+- Programming & Supporting Tools
+
+Initial skill catalogue
+
+Create a typed data structure so skills can be added, removed, or edited easily.
+
+Potential entries to include, subject to accurate status labels:
+
+Linux & systems:
+
+- Linux / Ubuntu
+- AlmaLinux
+- Windows Server
+- SSH
+- PuTTY
+- WinSCP
+- systemd / systemctl
+- Apache HTTP Server
+- Log analysis
+- Disk-space management
+- Service management
+
+Cloud:
+
+- AWS EC2
+- AWS S3
+- AWS IAM
+- AWS VPC
+- Amazon CloudWatch
+- AWS EBS
+- AWS EFS
+- Amazon RDS
+- AWS CloudFormation
+- Amazon SQS
+- AWS Lambda
+- Amazon SNS
+- Amazon SES
+- AWS Elastic Beanstalk
+- Amazon API Gateway
+- Amazon CloudFront
+
+Containers and orchestration:
+
+- Docker
+- Kubernetes
+- Helm
+
+CI/CD:
+
+- Git
+- GitHub
+- Jenkins
+- GitLab CI
+- GitHub Actions
+- Argo CD
+
+Infrastructure as Code and automation:
+
+- Terraform
+- Ansible
+- Bash
+- Python
+
+Monitoring:
+
+- Prometheus
+- Grafana
+- ELK/EFK concepts
+
+Operations and networking:
+
+- DNS
+- HTTP/HTTPS
+- Ports
+- Network troubleshooting
+- Application deployment
+- Production support
+- Release management
+- Rollback validation
+- Incident support
+
+Supporting tools:
+
+- JavaScript
+- Redis
+- RabbitMQ
+
+Do not label every technology as professionally used. Assign each skill a clearly editable status, such as:
+
+- Professional hands-on experience
+- Hands-on project experience
+- Training / curriculum
+- Currently developing
+- Planned learning
+
+Only mark technologies as professional experience when supported by the experience data. Do not create fake proficiency percentages or progress bars that imply measured expertise.
+
+Skill details interaction
+
+Clicking a skill opens its details, showing:
+
+- What the technology is used for.
+- How it relates to DevOps.
+- How Anoop used it, if verified.
+- The relevant project, role, or training, if available.
+- Related commands, configuration, architecture, or repository links when available.
+
+If a skill lacks supporting details, show a transparent message rather than inventing a use case.
+
+Search and filters must actually work.
+
+---
+
+9. PROJECTS PAGE — GitHub-inspired repository dashboard
+
+This is a major portfolio feature. The visual direction must be recognizably inspired by GitHub’s repository dashboard and project cards.
+
+Do not replace it with a generic portfolio gallery, cloud dashboard, or oversized marketing layout.
+
+Main dashboard
+
+Create a dark repository-oriented page with:
+
+- A repository-style heading and short introduction.
+- Search projects input.
+- Technology filter chips.
+- Responsive grid of project postcards.
+- Thin borders, understated surfaces, readable metadata, technology tags, and clear links.
+- A consistent repository-card design inspired by familiar GitHub project cards without copying official logos or branding.
+
+Possible filters:
+
+- All Projects
+- AWS / Cloud
+- CI/CD
+- Docker
+- Kubernetes
+- Linux
+- Automation
+
+Filters should derive from project data and work correctly.
+
+Project postcards
+
+Each project is a clickable card containing:
+
+- Project title.
+- Short description.
+- A dedicated visual area for a screenshot, architecture image, or project preview.
+- Technology tags.
+- A clear action such as “View project”.
+- Optional verified repository link.
+
+Use a neutral image placeholder when no real asset is available. Keep the image area and asset reference editable so real screenshots and diagrams can be added later.
+
+Do not fabricate screenshots, architecture images, repository URLs, GitHub stars, forks, contributors, commit counts, build statuses, or other repository statistics.
+
+Initial project records
+
+Create editable placeholder records for these projects:
+
+1. Zero-Downtime Deployment System.
+2. Jenkins CI/CD Pipeline on AWS.
+3. End-to-End Application Deployment using AWS, Jenkins, Docker & Kubernetes.
+4. Static Website Hosting using AWS S3.
+
+The Zero-Downtime Deployment System should be the featured project.
+
+The first project was developed around Linux, Docker, Nginx, GitHub Actions, and AWS EC2. Do not claim features beyond the implementation that can be verified.
+
+The other three project names are based on previous resume information. Their detailed descriptions, images, architectures, and repository links must remain editable and should be marked as pending verification until confirmed.
+
+Store project content in a separate typed data file.
+
+Use a reusable project detail template. Adding another project must not require creating a new page component from scratch.
+
+Individual project detail page
+
+Clicking a project postcard must open a dedicated route such as "/projects/zero-downtime-deployment".
+
+Each project detail page should support the following sections:
+
+1. Project title and summary.
+2. Project image or screenshot placeholder.
+3. Problem statement — what problem is being solved.
+4. Project objectives.
+5. Architecture — a reserved area for a real architecture diagram.
+6. Tools and technologies.
+7. Implementation — what was built and how.
+8. Deployment workflow.
+9. Challenges and solutions.
+10. Results and verification evidence.
+11. GitHub repository / README link.
+12. Back to Projects action.
+
+Hide sections that have no supplied content or show an appropriate “Details to be added” placeholder in edit mode; do not fill missing sections with fabricated claims.
+
+Support optional image paths, diagram paths, repository URLs, README URLs, and verified results in the project data structure.
+
+Use relative local asset paths for future screenshots, such as "/images/projects/", and show a graceful placeholder when a file is missing.
+
+If an image fails to load, it must not break the page.
+
+Featured project
+
+Feature Zero-Downtime Deployment System near the top of the Projects dashboard, followed by the full project grid.
+
+The featured section must not claim that zero downtime has been proven unless actual verification evidence is supplied.
+
+Navigation
+
+- Clicking a card opens the correct project detail route.
+- The detail page provides a working back-to-projects link.
+- The repository action opens the supplied URL in a new tab with safe link attributes.
+- If no repository URL is supplied, show a disabled or clearly pending repository action instead of an invented URL.
+
+---
+
+10. EXPERIENCE PAGE — Ansible-inspired operations dashboard
+
+Use a technical operations dashboard layout inspired by Ansible’s infrastructure-management presentation. Keep original branding.
+
+Show exactly these two professional work roles initially.
+
+Role 1: ABI Health Technologies / ABI Health
+
+Title: DevOps Trainee
+
+Dates: 17 November 2025 – 1 October 2026
+
+Use these responsibilities as editable initial content:
+
+- Supported healthcare applications, including LIMS and ClaimBook, across QA, UAT, and production environments.
+- Supported Linux Ubuntu and Windows Server IIS application deployments.
+- Assisted with backups, JAR replacement, validation, and post-deployment checks.
+- Supported scheduled production releases and rollback validation/recovery activities.
+- Managed and validated services using systemd/systemctl.
+- Investigated logs and assisted with troubleshooting.
+- Monitored disk usage and performed disk-space cleanup.
+- Used SSH, PuTTY, and WinSCP for remote administration and file transfer.
+- Assisted with Apache HTTP Server operations.
+- Assisted with Redis and RabbitMQ installation and service validation.
+- Collaborated with development, QA, and support teams.
+- Participated in SDLC, release-management, and change-management activities.
+
+Use the exact end date above. Do not display “Present”.
+
+Do not invent business impact, service uptime, percentage improvements, team size, or incident-resolution statistics.
+
+Role 2: Mphasis
+
+Title: Software Development Intern
+
+Dates: January 2025 – April 2025
+
+Editable initial description:
+
+- Developed modular components for a visa-travel photographic solution using JavaScript and React.js.
+- Worked on component integration and reusable code.
+- Supported testing and collaboration activities related to the application.
+
+Do not invent customer details, revenue impact, or quantitative outcomes.
+
+Layout behavior
+
+- Timeline or role cards.
+- Each role can expand to reveal responsibilities.
+- Clear employer, role title, dates, and technologies.
+- A technical metadata sidebar on larger screens, if it improves readability.
+- Mobile-friendly stacked layout.
+
+Do not include ScholarLogic as a work experience role. It belongs only in Professional Trainings.
+
+---
+
+11. PROFESSIONAL TRAININGS PAGE — Terraform/IaC-inspired layout
+
+Use an infrastructure-as-code-inspired interface, with clean technical cards, structured learning areas, module lists, and clear training status labels.
+
+Show exactly these two training records initially.
+
+Training 1
+
+Institute: ScholarLogic Training & Placement Institute
+
+Title: Basic DevOps and AWS Training Programme
+
+Dates: June 2025 – November 2025
+
+Editable initial topics:
+
+- Jenkins and GitHub pipeline fundamentals.
+- Sample deployment automation.
+- Docker and Kubernetes practice.
+- Terraform and Ansible practice.
+- AWS EC2, S3, IAM, and CloudWatch.
+- Linux fundamentals and monitoring.
+
+Clearly label this as a basic training programme. Do not present it as professional employment or claim advanced expertise solely because a topic appears here.
+
+Training 2
+
+Institute: Intellipaat
+
+Exact title: Executive Post Graduate Certification in Cloud Computing and DevOps
+
+Dates: September 2026 – Present
+
+Status: In progress.
+
+Initial editable curriculum topics:
+
+- AWS EC2, S3, IAM, VPC, EBS, EFS, RDS, CloudFormation, SQS, SNS, SES, Lambda, Elastic Beanstalk, API Gateway, Global Accelerator, and CloudFront.
+- Ansible, Docker, Kubernetes, Jenkins, ELK, and Terraform.
+- DevOps on AWS, DevSecOps, SLAs, load balancing, and Jira.
+- Virtualization, migration, distributed computing, system design, and cloud security.
+- Linux and Python preparation.
+
+Mark these as curriculum or learning topics, not as proof that each technology has been used professionally or that the course has been completed.
+
+Use badges or labels for “Completed” and “In progress” only when accurate.
+
+Keep course data editable.
+
+---
+
+12. CERTIFICATIONS PAGE — Digital Credential Vault
+
+Create a premium credential-management page inspired by cloud certification portals.
+
+Use dark navy, cyan, clean metadata panels, certificate cards, and a well-organized credential layout.
+
+The page title should be “Digital Credential Vault”.
+
+Requirements
+
+- Provide an editable certificate data structure.
+- Reserve space for a certificate image or PDF preview.
+- Display certificate title, issuer, issue date, credential ID, and verification URL only when verified details are provided.
+- Allow opening a real certificate file or official verification link.
+- Use a placeholder state when details are missing.
+- Provide an attractive empty state that explains certificates will be added.
+- Do not fabricate certificates, credential IDs, verification links, dates, scores, or badges.
+
+The actual certificate files and confirmed details will be supplied later.
+
+Do not invent a credential merely because a certification appears on an earlier resume.
+
+---
+
+13. CONTACT PAGE — Jenkins-inspired CI/CD Control Center
+
+Create a contact page that feels like a professional CI/CD operations console, with original branding.
+
+Page layout
+
+- Header: “Contact Control Center”.
+- Subtitle: “Let’s connect”.
+- A compact contact dashboard.
+- Separate contact cards for email, phone, LinkedIn, and GitHub.
+- A contact form.
+- Clear submission feedback.
+
+Initial contact data
+
+Email: anoops5218@gmail.com
+
+Phone: +91 9535244856
+
+Location: Bengaluru, India
+
+LinkedIn: https://linkedin.com/in/anoops1811
+
+GitHub profile: https://github.com/Code-checkmate
+
+Keep these details in one editable configuration file.
+
+Contact actions
+
+- Email card opens the user's default email application using a mailto link.
+- Phone card offers a telephone link and a copy-number action.
+- LinkedIn opens the supplied profile.
+- GitHub opens the supplied profile.
+- External links should use safe target and rel attributes where applicable.
+
+Contact form
+
+Fields:
+
+- Name
+- Email
+- Subject
+- Message
+
+Implement:
+
+- Required-field validation.
+- Email format validation.
+- Helpful inline validation messages.
+- Submission/loading state.
+- Clear success and failure states.
+- Accessible labels and keyboard navigation.
+
+IMPORTANT: Do not pretend that a message has been sent when it has not.
+
+No backend or email service has been configured yet. Build a clean submission adapter that can later be connected to a real service. Until configured, either use a clearly explained email-client fallback that prepares the message for the user to send, or show a clear “Direct form submission is not configured yet” message with a working email option.
+
+Do not add secret keys or rely on a fake API endpoint.
+
+---
+
+14. HIRE ME PAGE — opportunity pipeline
+
+This is a recruiter-focused page, visually inspired by a DevOps deployment pipeline dashboard.
+
+It should help a recruiter understand Anoop's profile quickly and then contact him.
+
+Hero section
+
+Use the heading:
+
+“Ready to build reliable systems?”
+
+Use this editable introduction:
+
+“DevOps professional with hands-on experience in Linux administration, application deployments, production support, log analysis, service management, and release activities. Experienced in supporting healthcare applications across QA, UAT, and production environments, while continuing to develop cloud, containerisation, and CI/CD skills through practical projects and professional training.”
+
+Keep the wording honest and editable.
+
+Main sections
+
+1. Professional summary.
+2. Core technical strengths.
+3. Featured projects.
+4. Professional experience.
+5. Resume action.
+6. Certification and training links.
+7. Contact actions.
+
+Use a recruiter-friendly layout that is easy to scan.
+
+Use technology chips only where the associated experience status is accurate. Distinguish professional experience from project or training exposure.
+
+Hire Anoop CTA
+
+The main CTA must be visually prominent in red and say:
+
+“Hire Anoop”
+
+When clicked, reveal or scroll to contact options on the same page:
+
+- Email
+- LinkedIn
+- Contact page
+
+Do not invent a job application workflow, recruiter pipeline status, salary, availability statistics, hiring metrics, or endorsements.
+
+Resume
+
+A final updated resume PDF will be provided later.
+
+Until a real PDF exists, use a clearly labeled resume placeholder or disabled download action. Never link to a nonexistent file or fabricate resume content.
+
+Once a real PDF is added, make the resume download button work correctly and provide a view/open option if practical.
+
+---
+
+15. Resume and asset handling
+
+Keep all future assets easy to add.
+
+Recommended public asset structure:
+
+- "public/resume/"
+- "public/images/projects/"
+- "public/images/certifications/"
+- "public/images/architecture/"
+
+Create placeholder directories or document the expected paths where necessary.
+
+Do not generate fake resume files, certificates, or screenshots.
+
+Provide a small developer-facing README explaining how to:
+
+- Replace the resume PDF.
+- Add a project screenshot.
+- Add an architecture diagram.
+- Add a certificate image or PDF.
+- Update a GitHub URL.
+- Edit project descriptions and technology tags.
+- Update experience and training records.
+
+Use predictable filenames and document them.
+
+If an asset is missing, the website must still render correctly.
+
+---
+
+16. Data architecture and maintainability
+
+Store editable content separately from page components.
+
+Suggested organization:
+
+- "src/components/"
+- "src/components/layout/"
+- "src/components/terminal/"
+- "src/components/projects/"
+- "src/pages/"
+- "src/data/"
+- "src/types/"
+- "src/styles/"
+- "src/utils/"
+
+Suggested data files:
+
+- "src/data/profile.ts"
+- "src/data/navigation.ts"
+- "src/data/skills.ts"
+- "src/data/projects.ts"
+- "src/data/experience.ts"
+- "src/data/trainings.ts"
+- "src/data/certifications.ts"
+- "src/data/contact.ts"
+
+Suggested reusable components:
+
+- SiteHeader
+- SiteFooter
+- TerminalSimulator
+- FloatingTerminal
+- ProjectCard
+- ProjectGrid
+- ProjectDetailLayout
+- SkillCard
+- StatusBadge
+- ExperienceCard
+- TrainingCard
+- CertificateCard
+- ContactCard
+- ResumeAction
+- PageHeading
+- EmptyState
+
+These names are suggestions, not rigid requirements. Keep the structure coherent and avoid creating files that serve no useful purpose.
+
+Use TypeScript interfaces or types for each data structure.
+
+Keep the project content editable without requiring major changes to the React components.
+
+Do not duplicate the same contact details in multiple places. Reference a shared data source.
+
+---
+
+17. Motion and interaction details
+
+Use subtle, purposeful animation:
+
+- Smooth navigation transitions where appropriate.
+- Small hover elevation or border changes on cards.
+- Expand/collapse animation for suitable panels.
+- Terminal typing/output effects only if they remain responsive and accessible.
+- Gentle reveal effects only where they do not interfere with navigation.
+
+Avoid excessive parallax, constant background movement, large animated particle systems, and effects that reduce performance.
+
+Every interactive element must work with keyboard and touch input.
+
+Do not add fake interactive elements that are purely decorative but appear clickable.
+
+---
+
+18. Accessibility, security, and quality
+
+Implement:
+
+- Semantic page structure and heading hierarchy.
+- Accessible navigation labels.
+- Visible keyboard focus.
+- Keyboard-operable buttons, links, dialogs, and forms.
+- Correct labels for form inputs.
+- Accessible status and error messages.
+- Useful alternative text for actual images.
+- Sufficient contrast.
+- Reduced-motion support.
+- Safe external-link handling.
+- No arbitrary command execution in the terminal simulator.
+- No secrets or private credentials in source code.
+- No untrusted HTML injection.
+- No unnecessary collection or storage of personal data.
+
+Do not make unsupported claims about security, compliance, or production readiness.
+
+---
+
+19. Testing and error prevention
+
+Do not stop after generating the initial files.
+
+Build the application incrementally, keeping it runnable as the work progresses.
+
+After implementing the pages:
+
+1. Install dependencies successfully.
+2. Run the project's build or TypeScript checks.
+3. Resolve all compile-time errors.
+4. Resolve missing imports and broken asset references.
+5. Check route configuration.
+6. Check that all nine main pages render.
+7. Check direct navigation to a project detail URL.
+8. Check search and filters on the Skills page.
+9. Check search and filters on the Projects page.
+10. Check terminal commands, unknown commands, clear, and route navigation.
+11. Check mobile menu behavior.
+12. Check contact form validation and the unconfigured-submission fallback.
+13. Check external links and placeholder actions.
+14. Check missing-image and empty-certificate states.
+15. Check for console errors and React key warnings.
+16. Check for horizontal overflow on mobile.
+17. Check that no links lead to nonexistent files or routes.
+
+If a test runner already exists, use it. If no test runner exists, perform appropriate build, type-check, and manual smoke checks without introducing unnecessary test dependencies.
+
+Fix errors you discover before reporting completion.
+
+Do not claim a test passed unless it was actually run.
+
+If the environment prevents a check, state that limitation clearly and complete all other available checks.
+
+---
+
+20. Final acceptance criteria
+
+The build is complete only when:
+
+- All nine main pages exist and are accessible through the shared navigation.
+- Each page reflects its agreed visual inspiration.
+- The website has a coherent, original design identity.
+- The Home page has the terminal-left / introduction-right desktop layout.
+- The minimized floating terminal works on the other pages.
+- The terminal accepts only safe simulated commands.
+- The Skills page search and filters work.
+- The Projects page has GitHub-inspired repository postcards.
+- Clicking a project opens a dedicated detail page.
+- Project detail pages contain reusable sections and honest placeholders for missing information.
+- Experience contains the two specified work roles.
+- Professional Trainings contains the two specified training records.
+- Certifications supports future real certificate assets.
+- Contact actions use the supplied details and the form does not fake delivery.
+- Hire Me includes the recruiter summary and working contact navigation.
+- Resume and image placeholders do not create broken links.
+- Responsive layouts work across common screen sizes.
+- The project builds successfully, or any environment blocker is clearly identified.
+- The source is organized and understandable enough to continue developing in VS Code.
+
+---
+
+21. Final instruction to the Replit agent
+
+First inspect the project and establish a stable working application. Then implement the shared design system, routing, and reusable layout components. Build each page using the specifications above, keeping the site runnable as you progress.
+
+Use good engineering judgment where small design decisions remain unspecified, but do not change the agreed page identities or replace the Projects dashboard with another style.
+
+Prioritize correctness and maintainability over unnecessary complexity. Do not fabricate content to make a page look complete.
+
+When finished, provide a concise report covering:
+
+- Pages and features implemented.
+- Project structure and important data files.
+- Commands used to build and check the application.
+- Checks that actually passed.
+- Any remaining setup needed for real form delivery, resume downloads, certificates, screenshots, or verified repository links.
+
+Deliver a complete, responsive, working portfolio website with clean source code suitable for future editing in VS Code and publishing to GitHub.

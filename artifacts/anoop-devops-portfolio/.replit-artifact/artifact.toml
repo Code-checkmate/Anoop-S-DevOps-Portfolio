@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Anoop S. · DevOps Portfolio"
+description = "A responsive, multi-page DevOps engineering portfolio for Anoop S., featuring project details, career and training records, an interactive simulated Linux terminal, and recruiter-friendly contact information."
+version = "1.0.0"
+id = "artifacts/anoop-devops-portfolio"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23130
+
+[services.development]
+run = "pnpm --filter @workspace/anoop-devops-portfolio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/anoop-devops-portfolio", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/anoop-devops-portfolio/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23130"
+BASE_PATH = "/"
